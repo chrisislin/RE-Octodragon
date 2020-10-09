@@ -1,4 +1,4 @@
-import keyboard as key
+import keyboard
 from time import sleep
 
 def Scroll_Windows(arg):
@@ -6,7 +6,6 @@ def Scroll_Windows(arg):
         Alt_Tab()
     else:
         Alt_Shift_Tab()
-
 def Scroll_Tabs(arg):
     if arg == 0:
         Ctrl_Tab()
@@ -14,97 +13,54 @@ def Scroll_Tabs(arg):
         Ctrl_Shift_Tab()
 
 def Tab():
-    key.Keyboard.keyDown(key.Keyboard.VK_TAB)
-    key.Keyboard.keyUp(key.Keyboard.VK_TAB)
+    keyboard.press_and_release('tab')
 
 def Shift_Tab():
-    key.Keyboard.keyDown(key.Keyboard.VK_SHIFT)
-    key.Keyboard.keyDown(key.Keyboard.VK_TAB)
-    key.Keyboard.keyUp(key.Keyboard.VK_TAB)
-    key.Keyboard.keyUp(key.Keyboard.VK_SHIFT)
+    keyboard.press_and_release('shift, tab')
 
 def Enter(arg):
     if arg == 0:
         return
-    key.Keyboard.keyDown(key.Keyboard.VK_ENTER)
-    key.Keyboard.keyUp(key.Keyboard.VK_ENTER)
+    keyboard.press_and_release('enter')
 
 def Shift():
-    key.Keyboard.keyDown(key.Keyboard.VK_SHIFT)
-    key.Keyboard.keyUp(key.Keyboard.VK_SHIFT)
+    keyboard.press_and_release('shift')
+
 
 def Ctrl():
-    key.Keyboard.keyDown(key.Keyboard.VK_CTRL)
-    key.Keyboard.keyUp(key.Keyboard.VK_CTRL)
+    keyboard.press_and_release('left ctrl')
 
 def BackSpace():
-    key.Keyboard.keyDown(key.Keyboard.VK_BACKSPACE)
-    key.Keyboard.keyUp(key.Keyboard.VK_BACKSPACE)
+    keyboard.press_and_release('backspace')
+
 
 def B_Back():
-    key.Keyboard.keyDown(key.Keyboard.VK_BROWSER_BACK)
-    key.Keyboard.keyUp(key.Keyboard.VK_BROWSER_BACK)
+    keyboard.press_and_release('alt, left arrow')
+
 
 def B_Favorite():
-    key.Keyboard.keyDown(key.Keyboard.VK_BROWSER_FAVORITES)
-    key.Keyboard.keyUp(key.Keyboard.VK_BROWSER_FAVORITES)
+    keyboard.press_and_release('alt, left arrow')
+
 
 def B_Forward():
-    key.Keyboard.keyDown(key.Keyboard.VK_BROWSER_FORWARD)
-    key.Keyboard.keyUp(key.Keyboard.VK_BROWSER_FORWARD)
+    keyboard.press_and_release('left ctrl, shift, t')
+
 
 
 def Alt_Tab():
-    key.Keyboard.keyDown(key.Keyboard.VK_ALT)
-    sleep(0.1)
-    key.Keyboard.keyDown(key.Keyboard.VK_TAB)
-    sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_TAB)
-    sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_ALT)
+    keyboard.press_and_release('alt,tab ')
 
 def Alt_Shift_Tab():
-    key.Keyboard.keyDown(key.Keyboard.VK_SHIFT)
-    sleep(0.1)
-    key.Keyboard.keyDown(key.Keyboard.VK_ALT)
-    sleep(0.1)
-    key.Keyboard.keyDown(key.Keyboard.VK_TAB)
-    sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_TAB)
-    sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_ALT)
-    sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_SHIFT)
+    keyboard.press_and_release('alt,shift, tab')
 
 def Ctrl_Tab():
-    key.Keyboard.keyDown(key.Keyboard.VK_CTRL)
-    # sleep(0.1)
-    key.Keyboard.keyDown(key.Keyboard.VK_TAB)
-    # sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_TAB)
-    # sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_CTRL)
+    keyboard.press_and_release('left ctrl, tab')
+
 
 def Ctrl_Shift_Tab():
-    key.Keyboard.keyDown(key.Keyboard.VK_SHIFT)
-    # sleep(0.1)
-    key.Keyboard.keyDown(key.Keyboard.VK_CTRL)
-    # sleep(0.1)
-    key.Keyboard.keyDown(key.Keyboard.VK_TAB)
-    # sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_TAB)
-    # sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_CTRL)
-    # sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_SHIFT)
+    keyboard.press_and_release('left ctrl, shift,  tab')
 
 def Ctrl_W(arg):
     if arg == 0:
         return
-    key.Keyboard.keyDown(key.Keyboard.VK_CTRL)
-    # sleep(0.1)
-    key.Keyboard.keyDown(key.Keyboard.VK_W)
-    # sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_W)
-    # sleep(0.1)
-    key.Keyboard.keyUp(key.Keyboard.VK_CTRL)
+    keyboard.press_and_release('left ctrl+w')

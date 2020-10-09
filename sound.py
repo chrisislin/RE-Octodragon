@@ -84,7 +84,8 @@ class Sound:
         """
         Sound.__track()
         Sound.__set_current_volume(Sound.current_volume() + 2)
-        Keyboard.key(Keyboard.VK_VOLUME_UP)
+        #Keyboard.key(Keyboard.VK_VOLUME_UP)
+        keyboard.press_and_release('up arrow')
 
     @staticmethod
     def volume_down():
@@ -95,7 +96,8 @@ class Sound:
         """
         Sound.__track()
         Sound.__set_current_volume(Sound.current_volume() - 2)
-        Keyboard.key(Keyboard.VK_VOLUME_DOWN)
+        #Keyboard.key(Keyboard.VK_VOLUME_DOWN)
+        keyboard.press_and_release('down arrow')
 
 
     @staticmethod

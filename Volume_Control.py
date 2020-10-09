@@ -9,11 +9,14 @@ def Change_Volume(direction):
 def Increase_Volume():
     Sound.volume_up()
 
+#Increase_Volume()
+
 def Decrease_Volume():
     Sound.volume_down()
 
 def Mute():
     Sound.mute()
+Mute()
 
 def Max_Volume():
     Sound.volume_max()
