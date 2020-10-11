@@ -1,5 +1,6 @@
 from tkinter import *
-import Keyboard_Control as keyboard
+import keyboard
+import Keyboard_Control as keyboard1
 #import Windows_Control as windows
 import Volume_Control as volume
 import Youtube_Control as youtube
@@ -8,17 +9,15 @@ def nothing(arg):
     pass
 
 
-Function_Dict = {"rot":volume.Set_Volume,
+Function_Dict = {"rot":youtube.Open_Youtube,
                  "touch": youtube.Open_Youtube,
                  "light": nothing,
                  #"button": windows.Toggle_Brightness,
-                 "click": keyboard.Enter,
-                 "encoder": keyboard.Scroll_Windows}
+                 "click": keyboard1.Enter,
+                 "encoder": keyboard1.Scroll_Windows}
 
 
 def GUI():
-
-
     rotItem = ''
     touchItem = ''
     lightItem = ''
@@ -26,44 +25,34 @@ def GUI():
     clickItem = ''
     encoderItem = ''
 
-
-
     tk = Tk()
     tk.title("Sensors and Actions")
     tk.geometry("400x200+300+200")
 
-    rotVar = StringVar(tk)
-    touchVar = StringVar(tk)
-    lightVar= StringVar(tk)
-    #buttonActVar = StringVar(tk)
-    clickVar = StringVar(tk)
-    encoderVar = StringVar(tk)
+    rotVar = StringVar()
+    touchVar = StringVar()
+    lightVar= StringVar()
+    clickVar = StringVar()
+    encoderVar = StringVar()
 
-
-    rotVar.set("Volume")
-    touchVar.set("YouTube")
+    rotVar.set("YouTube")
+    touchVar.set("Scroll Windows")
     lightVar.set("Auto-Dim")
-    #buttonActVar.set('Toggle Brightness')
     clickVar.set("Enter")
     encoderVar.set("Scroll Windows")
 
-    print(encoderVar)
+    print("ahhh")
 
 
 
-    
-    def getRotItem():
-        rotItem = rotVar.get()
-        if (rotItem == "Volume"):
-            Function_Dict["rot"] = volume.Set_Volume
-        elif (rotItem == "Brightness"):
-            "Just clicked Brightness"
-            Function_Dict["rot"] = windows.Change_Brightness
-            
     def getTouchItem():
         touchItem = touchVar.get()
         if touchItem == 'YouTube':
+            if keyboard.is_pressed('b'):
+                Function_Dict["rot"] = youtube.Open_Youtube
+                youtube.Open_Youtube(1)
             Function_Dict['touch'] = youtube.Open_Youtube
+
         elif touchItem == 'Toggle Brightness':
             Function_Dict['touch'] = windows.Toggle_Brightness
 
@@ -71,69 +60,82 @@ def GUI():
     def getLightItem():
         lightItem = lightVar.get()
 
-    '''
-    def getbuttonActItem(self):
-        buttonActItem = buttonActVar.get()
-        if buttonActItem == 'YouTube':
-            Function_Dict['button'] = youtube.Open_Youtube
-        elif buttonActItem == 'Toggle Brightness':
-            Function_Dict['button'] = windows.Toggle_Brightness
-    '''
-
-
     def getClickItem():
         clickItem = clickVar.get()
         if clickItem == 'Enter':
-            Function_Dict['click'] = keyboard.Enter
+            Function_Dict['click'] = keyboard1.Enter
         elif clickItem == 'New Tab':
             Function_Dict['click'] = youtube.Open_New_Tab
         elif clickItem == 'Close Tab':
-            Function_Dict['click'] = keyboard.Ctrl_W
+            Function_Dict['click'] = keyboard1.Ctrl_W
 
     def getEncoderItem():
         encoderItem = encoderVar.get()
         if encoderItem == 'Scroll Windows':
-            Function_Dict['encoder'] = keyboard.Scroll_Windows
+            #if keyboard.is_pressed('e'):
+            Function_Dict['encoder'] = keyboard1.Scroll_Windows
+            #keyboard1.Scroll_Windows(0)
         elif encoderItem == 'Scroll Tabs':
-            Function_Dict['encoder'] = keyboard.Scroll_Tabs
-            
-    #def sendData():
-    #    print("send data")
+            #if keyboard.is_pressed('e'):
+            Function_Dict['encoder'] = keyboard1.Scroll_Tabs
+            #keyboard1.Scroll_Tabs(0)
 
 
 
-    Label(tk, text="Rot:").grid(column=0,row=0)
-    Label(tk, text="Touch:").grid(column=0,row=1)
-    Label(tk, text="Light:").grid(column=0,row=2)
-    #Label(tk, text="Button:").grid(column=0,row=3)
-    Label(tk, text="Encoder:").grid(column=0,row=3)
-    Label(tk, text="Encoder Click:").grid(column=0,row=4)
+    Label(tk, text="a:").grid(column=0,row=0)
+    Label(tk, text="b:").grid(column=0,row=1)
+    Label(tk, text="c:").grid(column=0,row=2)
+    Label(tk, text="d:").grid(column=0,row=3)
+    Label(tk, text="e:").grid(column=0,row=4)
 
-    rot = OptionMenu(tk, rotVar, "Volume", "Brightness", command=getRotItem())
+
+    def getRotItem(val):
+        rotItem = rotVar.get()
+        if (rotItem == "YouTube"):
+            Function_Dict["rot"] = youtube.Open_Youtube
+            #youtube.Open_Youtube(1)
+
+        elif (rotItem == "New Tab"):
+            Function_Dict["rot"] = youtube.Open_New_Tab
+            #youtube.Open_New_Tab(1)
+
+
+    rot = OptionMenu(tk, rotVar, "YouTube", "New Tab", command=getRotItem)
+    touch = OptionMenu(tk, touchVar, "YouTube", "Toggle Brightness", command=getTouchItem())
+    light = OptionMenu(tk, lightVar, "Auto-Dim", "Enter", command=getLightItem())
+    click = OptionMenu(tk, clickVar, "Enter", "New Tab", command=getClickItem())
+    encoder = OptionMenu(tk, encoderVar, "Scroll Windows", "Scroll Tabs", command=getEncoderItem())
+
+
     rot.config(width=16)
-    rot.grid(column=1,row=0)
-    touch = OptionMenu(tk, touchVar, "YouTube", "Toggle Brightness", command=getTouchItem)
+    rot.grid(column=1, row=0)
     touch.config(width=16)
-    touch.grid(column=1,row=1)
-    light = OptionMenu(tk, lightVar, "Auto-Dim", command=getLightItem)
+    touch.grid(column=1, row=1)
     light.config(width=16)
-    light.grid(column=1,row=2)
-
-    #buttonAct = OptionMenu(tk, buttonActVar, "Toggle Brightness", "YouTube"), command=getbuttonActItem)
-    #buttonAct.config(width=16)
-    #buttonAct.grid(column=1,row=3)
-
-    click = OptionMenu(tk, clickVar, "Enter", "New Tab", "Close Tab", command=getClickItem)
+    light.grid(column=1, row=2)
     click.config(width=16)
-    click.grid(column=1,row=3)
-
-    encoder = OptionMenu(tk, encoderVar, "Scroll Windows", "Scroll Tabs",  command=getEncoderItem)
+    click.grid(column=1, row=3)
     encoder.config(width=16)
-    encoder.grid(column=1,row=4)
+    encoder.grid(column=1, row=4)
 
-    button = Button(tk, text="OK", command=getRotItem)
+    def rotDef(rotVar):
+
+        if (rotVar == "YouTube"):
+            if keyboard.is_pressed('a'):
+                Function_Dict["rot"] = youtube.Open_Youtube
+                youtube.Open_Youtube(1)
+
+        elif (rotVar == "New Tab"):
+            if keyboard.is_pressed('a'):
+                Function_Dict["rot"] = youtube.Open_New_Tab
+                youtube.Open_New_Tab(1)
+
 
     while True:
+        rotDef(rotVar.get())
+
+        #print("yes")
         tk.update_idletasks()
         tk.update()
+
 GUI()

@@ -16,7 +16,7 @@ def Decrease_Volume():
 
 def Mute():
     Sound.mute()
-Mute()
+
 
 def Max_Volume():
     Sound.volume_max()
