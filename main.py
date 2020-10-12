@@ -36,8 +36,8 @@ def GUI():
     encoderVar = StringVar()
 
     rotVar.set("YouTube")
-    touchVar.set("Scroll Windows")
-    lightVar.set("Auto-Dim")
+    touchVar.set("Space")
+    lightVar.set("Scroll Windows2")
     clickVar.set("New Tab")
     encoderVar.set("Scroll Windows")
 
@@ -92,7 +92,7 @@ def GUI():
         elif (rotItem == "New Tab"):
             Function_Dict["rot"] = youtube.Open_New_Tab
             #youtube.Open_New_Tab(1)
-    '''
+    
 
     def getClickItem(val):
         clickItem = clickVar.get()
@@ -100,6 +100,8 @@ def GUI():
             Function_Dict['click'] = youtube.Open_New_Tab
         elif clickItem == 'Close Tab':
             Function_Dict['click'] = keyboard1.Ctrl_W
+            
+    '''
 
     def rotDef(rotVar):
 
@@ -113,6 +115,32 @@ def GUI():
                 Function_Dict["rot"] = youtube.Open_New_Tab
                 youtube.Open_New_Tab(1)
 
+    def touchDef(touchVar):
+        if touchVar == 'Space':
+            keyboard1.Space(0)
+            if keyboard.is_pressed('b'):
+                Function_Dict['touch'] = keyboard1.Space
+                keyboard1.Space(1)
+
+        elif touchVar == 'Backspace':
+            keyboard1.BackSpace(0)
+            if keyboard.is_pressed('b'):
+                Function_Dict['touch'] = keyboard1.BackSpace
+                keyboard1.BackSpace(1)
+
+    def lightDef(lightVar):
+        if encoderVar == 'Scroll Windows2':
+            keyboard1.Scroll_Windows(0)
+            if keyboard.is_pressed('c'):
+                Function_Dict['encoder'] = keyboard1.Scroll_Windows
+                keyboard1.Scroll_Windows(2)
+
+        elif encoderVar == 'Scroll Tabs2':
+            keyboard1.Scroll_Tabs(0)
+            if keyboard.is_pressed('c'):
+                Function_Dict['encoder'] = keyboard1.Scroll_Tabs
+                keyboard1.Scroll_Tabs(2)
+                
     def clickDef(clickVar):
         #print(clickVar)
         if clickVar == 'New Tab':
@@ -120,30 +148,27 @@ def GUI():
                 Function_Dict['click'] = youtube.Open_New_Tab
                 youtube.Open_New_Tab(1)
         elif clickVar == 'Delete Tab':
+            keyboard1.Ctrl_W(0)
             if keyboard.is_pressed('d'):
                 Function_Dict['click'] = keyboard1.Ctrl_W
                 keyboard1.Ctrl_W(1)
 
     def encoderDef(encoderVar):
         if encoderVar == 'Scroll Windows':
+            keyboard1.Scroll_Windows(0)
             if keyboard.is_pressed('e'):
                 Function_Dict['encoder'] = keyboard1.Scroll_Windows
-                keyboard1.Scroll_Windows(0)
+                keyboard1.Scroll_Windows(1)
 
         elif encoderVar == 'Scroll Tabs':
+            keyboard1.Scroll_Tabs(0)
             if keyboard.is_pressed('e'):
                 Function_Dict['encoder'] = keyboard1.Scroll_Tabs
-                keyboard1.Scroll_Tabs(0)
-
-    def touchDef(touchVar):
-        pass
-    def lightDef(lightVar):
-        pass
-
+                keyboard1.Scroll_Tabs(1)
 
     rot = OptionMenu(tk, rotVar, "YouTube", "New Tab", command=rotDef)
-    touch = OptionMenu(tk, touchVar, "YouTube", "Toggle Brightness", command=touchDef)
-    light = OptionMenu(tk, lightVar, "Auto-Dim", "Enter", command=lightDef)
+    touch = OptionMenu(tk, touchVar, "Space", "Backspace", command=touchDef)
+    light = OptionMenu(tk, lightVar, "Scroll Windows2", "Scroll Tabs2", command=lightDef)
     click = OptionMenu(tk, clickVar, "Delete Tab", "New Tab", command=clickDef)
     encoder = OptionMenu(tk, encoderVar, "Scroll Windows", "Scroll Tabs", command=encoderDef)
 
@@ -166,6 +191,8 @@ def GUI():
         rotDef(rotVar.get())
         clickDef(clickVar.get())
         encoderDef(encoderVar.get())
+        touchDef(touchVar.get())
+        lightDef(lightVar.get())
 
         #print("yes")
         tk.update_idletasks()

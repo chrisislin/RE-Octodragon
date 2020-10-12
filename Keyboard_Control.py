@@ -4,14 +4,14 @@ from time import sleep
 
 def Scroll_Windows(arg):
     if arg == 0:
-        Alt_Tab()
-    else:
-        Alt_Shift_Tab()
+        return
+    Alt_Tab()
+    #Alt_Shift_Tab()
 def Scroll_Tabs(arg):
     if arg == 0:
-        Ctrl_Tab()
-    else:
-        Ctrl_Shift_Tab()
+        return
+    Ctrl_Tab()
+    #Ctrl_Shift_Tab()
 
 def Tab():
     keyboard.press_and_release('tab')
@@ -31,7 +31,14 @@ def Shift():
 def Ctrl():
     keyboard.press_and_release('left ctrl')
 
-def BackSpace():
+def Space(arg):
+    if arg == 0:
+        return
+    keyboard.press_and_release('space')
+
+def BackSpace(arg):
+    if arg == 0:
+        return
     keyboard.press_and_release('backspace')
 
 
