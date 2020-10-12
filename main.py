@@ -137,7 +137,7 @@ def GUI():
         if lightVar == 'Scroll Windows2':
             keyboard1.Scroll_Windows(0)
             if keyboard.is_pressed('c'):
-                print("cccc")
+                #print("cccc")
                 Function_Dict['encoder'] = keyboard1.Scroll_Windows
                 keyboard1.Scroll_Windows(0)
                 time.sleep(0.25)
@@ -146,7 +146,7 @@ def GUI():
 
             keyboard1.Scroll_Tabs(0)
             if keyboard.is_pressed('c'):
-                print("cccccc")
+                #print("cccccc")
                 Function_Dict['encoder'] = keyboard1.Scroll_Tabs
                 keyboard1.Scroll_Tabs(0)
                 time.sleep(0.25)
@@ -169,7 +169,7 @@ def GUI():
         if encoderVar == 'Scroll Windows':
             keyboard1.Scroll_Windows(0)
             if keyboard.is_pressed('e'):
-                print("eeee")
+                #print("eeee")
                 Function_Dict['encoder'] = keyboard1.Scroll_Windows
                 keyboard1.Scroll_Windows(1)
                 time.sleep(0.25)
@@ -177,7 +177,7 @@ def GUI():
         elif encoderVar == 'Scroll Tabs':
             keyboard1.Scroll_Tabs(0)
             if keyboard.is_pressed('e'):
-                print("eeee")
+                #print("eeee")
                 Function_Dict['encoder'] = keyboard1.Scroll_Tabs
                 keyboard1.Scroll_Tabs(1)
                 time.sleep(0.25)
