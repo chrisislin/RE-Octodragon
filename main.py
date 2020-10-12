@@ -38,13 +38,13 @@ def GUI():
     rotVar.set("YouTube")
     touchVar.set("Scroll Windows")
     lightVar.set("Auto-Dim")
-    clickVar.set("Enter")
+    clickVar.set("New Tab")
     encoderVar.set("Scroll Windows")
 
     print("ahhh")
 
 
-
+    '''
     def getTouchItem():
         touchItem = touchVar.get()
         if touchItem == 'YouTube':
@@ -60,14 +60,7 @@ def GUI():
     def getLightItem():
         lightItem = lightVar.get()
 
-    def getClickItem():
-        clickItem = clickVar.get()
-        if clickItem == 'Enter':
-            Function_Dict['click'] = keyboard1.Enter
-        elif clickItem == 'New Tab':
-            Function_Dict['click'] = youtube.Open_New_Tab
-        elif clickItem == 'Close Tab':
-            Function_Dict['click'] = keyboard1.Ctrl_W
+
 
     def getEncoderItem():
         encoderItem = encoderVar.get()
@@ -79,6 +72,7 @@ def GUI():
             #if keyboard.is_pressed('e'):
             Function_Dict['encoder'] = keyboard1.Scroll_Tabs
             #keyboard1.Scroll_Tabs(0)
+    '''
 
 
 
@@ -88,7 +82,7 @@ def GUI():
     Label(tk, text="d:").grid(column=0,row=3)
     Label(tk, text="e:").grid(column=0,row=4)
 
-
+    '''
     def getRotItem(val):
         rotItem = rotVar.get()
         if (rotItem == "YouTube"):
@@ -98,25 +92,14 @@ def GUI():
         elif (rotItem == "New Tab"):
             Function_Dict["rot"] = youtube.Open_New_Tab
             #youtube.Open_New_Tab(1)
+    '''
 
-
-    rot = OptionMenu(tk, rotVar, "YouTube", "New Tab", command=getRotItem)
-    touch = OptionMenu(tk, touchVar, "YouTube", "Toggle Brightness", command=getTouchItem())
-    light = OptionMenu(tk, lightVar, "Auto-Dim", "Enter", command=getLightItem())
-    click = OptionMenu(tk, clickVar, "Enter", "New Tab", command=getClickItem())
-    encoder = OptionMenu(tk, encoderVar, "Scroll Windows", "Scroll Tabs", command=getEncoderItem())
-
-
-    rot.config(width=16)
-    rot.grid(column=1, row=0)
-    touch.config(width=16)
-    touch.grid(column=1, row=1)
-    light.config(width=16)
-    light.grid(column=1, row=2)
-    click.config(width=16)
-    click.grid(column=1, row=3)
-    encoder.config(width=16)
-    encoder.grid(column=1, row=4)
+    def getClickItem(val):
+        clickItem = clickVar.get()
+        if clickItem == 'New Tab':
+            Function_Dict['click'] = youtube.Open_New_Tab
+        elif clickItem == 'Close Tab':
+            Function_Dict['click'] = keyboard1.Ctrl_W
 
     def rotDef(rotVar):
 
@@ -130,9 +113,59 @@ def GUI():
                 Function_Dict["rot"] = youtube.Open_New_Tab
                 youtube.Open_New_Tab(1)
 
+    def clickDef(clickVar):
+        #print(clickVar)
+        if clickVar == 'New Tab':
+            if keyboard.is_pressed('d'):
+                Function_Dict['click'] = youtube.Open_New_Tab
+                youtube.Open_New_Tab(1)
+        elif clickVar == 'Delete Tab':
+            if keyboard.is_pressed('d'):
+                Function_Dict['click'] = keyboard1.Ctrl_W
+                keyboard1.Ctrl_W(1)
+
+    def encoderDef(encoderVar):
+        if encoderVar == 'Scroll Windows':
+            if keyboard.is_pressed('e'):
+                Function_Dict['encoder'] = keyboard1.Scroll_Windows
+                keyboard1.Scroll_Windows(0)
+
+        elif encoderVar == 'Scroll Tabs':
+            if keyboard.is_pressed('e'):
+                Function_Dict['encoder'] = keyboard1.Scroll_Tabs
+                keyboard1.Scroll_Tabs(0)
+
+    def touchDef(touchVar):
+        pass
+    def lightDef(lightVar):
+        pass
+
+
+    rot = OptionMenu(tk, rotVar, "YouTube", "New Tab", command=rotDef)
+    touch = OptionMenu(tk, touchVar, "YouTube", "Toggle Brightness", command=touchDef)
+    light = OptionMenu(tk, lightVar, "Auto-Dim", "Enter", command=lightDef)
+    click = OptionMenu(tk, clickVar, "Delete Tab", "New Tab", command=clickDef)
+    encoder = OptionMenu(tk, encoderVar, "Scroll Windows", "Scroll Tabs", command=encoderDef)
+
+
+    rot.config(width=16)
+    rot.grid(column=1, row=0)
+    touch.config(width=16)
+    touch.grid(column=1, row=1)
+    light.config(width=16)
+    light.grid(column=1, row=2)
+    click.config(width=16)
+    click.grid(column=1, row=3)
+    encoder.config(width=16)
+    encoder.grid(column=1, row=4)
+
+
+
 
     while True:
         rotDef(rotVar.get())
+        clickDef(clickVar.get())
+        encoderDef(encoderVar.get())
 
         #print("yes")
         tk.update_idletasks()
