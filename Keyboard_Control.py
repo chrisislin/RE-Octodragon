@@ -5,12 +5,12 @@ from time import sleep
 def Scroll_Windows(arg):
     if arg == 0:
         return
-    Alt_Tab()
+    keyboard.press_and_release('alt, tab')
     #Alt_Shift_Tab()
 def Scroll_Tabs(arg):
     if arg == 0:
         return
-    Ctrl_Tab()
+    keyboard.press_and_release('left ctrl, tab')
     #Ctrl_Shift_Tab()
 
 def Tab():
@@ -53,15 +53,16 @@ def B_Favorite():
 def B_Forward():
     keyboard.press_and_release('left ctrl, shift, t')
 
+'''
 def Alt_Tab():
     keyboard.press_and_release('alt, tab')
-
+'''
 def Alt_Shift_Tab():
     keyboard.press_and_release('alt,shift, tab')
-
+'''
 def Ctrl_Tab():
     keyboard.press_and_release('left ctrl, tab')
-
+'''
 
 def Ctrl_Shift_Tab():
     keyboard.press_and_release('left ctrl, shift, tab')
