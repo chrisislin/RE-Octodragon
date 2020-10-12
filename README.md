@@ -45,12 +45,12 @@ Gallery Here: https://devpost.com/software/octodragon
 ******************************************************************************************************************************
 
 ### __Contributors__
+
+    Christopher Lin
       
     Garey Fleeman
     
     Steven Landis
-    
-    Christopher Lin
     
     Kiet Nyugen
  
