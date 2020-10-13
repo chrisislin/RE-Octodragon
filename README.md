@@ -1,6 +1,8 @@
 # **Octodragon - Remastered**
 ## IoT Qualcomm Dragonboard 410c Project
 
+![Alt text](octo.gif)
+
 ### Inspiration
 We have a bunch buttons lying around our keyboard, so we made a tool to use them.
 
