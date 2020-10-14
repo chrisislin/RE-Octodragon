@@ -43,6 +43,10 @@ As a user, I can use sensors to transmit signals into events on the computer
 
 Gallery Here: https://devpost.com/software/octodragon
 
+### How to run
+0. pip3 install keyboard
+1. python main.py
+
 
 ******************************************************************************************************************************
 
