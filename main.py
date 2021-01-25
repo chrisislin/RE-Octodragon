@@ -20,13 +20,6 @@ Function_Dict = {"rot":youtube.Open_Youtube,
 
 
 def GUI():
-    rotItem = ''
-    touchItem = ''
-    lightItem = ''
-    #buttonActItem = ''
-    clickItem = ''
-    encoderItem = ''
-
     tk = Tk()
     tk.title("Sensors and Actions")
     tk.geometry("400x200+300+200")
@@ -42,8 +35,6 @@ def GUI():
     lightVar.set("Scroll Windows2")
     clickVar.set("New Tab")
     encoderVar.set("Scroll Windows")
-
-    print("ahhh")
 
 
     '''
@@ -106,7 +97,6 @@ def GUI():
     '''
 
     def rotDef(rotVar):
-
         if (rotVar == "YouTube"):
             if keyboard.is_pressed('a'):
                 Function_Dict["rot"] = youtube.Open_Youtube
@@ -199,9 +189,6 @@ def GUI():
     click.grid(column=1, row=3)
     encoder.config(width=16)
     encoder.grid(column=1, row=4)
-
-
-
 
     while True:
         rotDef(rotVar.get())
